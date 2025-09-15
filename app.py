@@ -14,7 +14,6 @@ def run():
         "K-Lang: Manual Batalla"
     ])
 
-    # Precog Tab
     with tabs[0]:
         st.header("Mapa de Calor de Riesgo")
         mapa_path = os.path.join("precog", "mapa_calor.png")
@@ -29,7 +28,6 @@ def run():
         resultado = predecir_riesgo(velocidad_media, intensidad_lluvia)
         st.metric(label="Nivel de Riesgo", value=resultado)
 
-    # Chronos Tab
     with tabs[1]:
         st.header("Elige tu estrategia favorita")
         estrategia = st.selectbox("¿Cuál te mola más?", ["Fortaleza Verde", "Búnker Tecnológico"])
@@ -41,7 +39,6 @@ def run():
             st.warning("No hay imagen, ups.")
         st.write(estrategias_texto[estrategia])
 
-    # K-Lang Tab
     with tabs[2]:
         st.header("Protocolos (elige uno y mira qué pasa)")
         protocolo = st.selectbox("Protocolo:", ["VÍSPERA", "CÓDIGO ROJO", "RENACIMIENTO"])
