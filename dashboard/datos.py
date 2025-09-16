@@ -10,7 +10,6 @@ def mostrar_datos():
     import matplotlib.pyplot as plt
     from mpl_toolkits.mplot3d import Axes3D
 
-    # Generar datos de clústeres simulados
     np.random.seed(42)
     viento_cluster = np.random.uniform(0, 200, 100)
     lluvia_cluster = np.random.uniform(0, 100, 100)
@@ -18,17 +17,13 @@ def mostrar_datos():
 
     fig = plt.figure(figsize=(5, 4))
     ax = fig.add_subplot(111, projection='3d')
-    # No se dibujan puntos de clústeres
 
-    # Simulación actual
     velocidad_media = st.slider("Velocidad media (km/h)", min_value=0, max_value=200, value=80)
     intensidad_lluvia = st.slider("Intensidad de lluvia (mm/h)", min_value=0, max_value=100, value=20)
     temperatura = st.slider("Temperatura (°C)", min_value=-10, max_value=50, value=20)
 
-    # Calcular riesgo y color
     riesgo = precog.predecir_riesgo(velocidad_media, intensidad_lluvia, temperatura)
     riesgo_valor = int(riesgo.split('%')[0])
-    # Color de la cruz
     from matplotlib.colors import LinearSegmentedColormap
     cmap = LinearSegmentedColormap.from_list('risk', ['blue', 'red'])
     cruz_color = cmap(riesgo_valor / 100)
