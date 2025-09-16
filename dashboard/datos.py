@@ -16,9 +16,10 @@ def mostrar_datos():
     st.subheader("Simulador de Riesgo Interactivo")
     velocidad_media = st.slider("Velocidad media (km/h)", min_value=0, max_value=200, value=80)
     intensidad_lluvia = st.slider("Intensidad de lluvia (mm/h)", min_value=0, max_value=100, value=20)
+    temperatura = st.slider("Temperatura (°C)", min_value=-10, max_value=50, value=20)
 
     if st.button("Calcular nivel de riesgo en cascada"):
-        riesgo = precog.predecir_riesgo(velocidad_media, intensidad_lluvia)
+        riesgo = precog.predecir_riesgo(velocidad_media, intensidad_lluvia, temperatura)
         st.success(f"Nivel de riesgo en cascada: {riesgo}")
     else:
         st.info("Ajusta los parámetros y pulsa 'Calcular nivel de riesgo en cascada'.")

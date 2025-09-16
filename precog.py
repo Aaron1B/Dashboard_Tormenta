@@ -1,5 +1,12 @@
-def predecir_riesgo(velocidad_media, intensidad_lluvia):
-    riesgo = int((velocidad_media * 0.4 + intensidad_lluvia * 0.6))
+def predecir_riesgo(velocidad_media, intensidad_lluvia, temperatura):
+    # Peso para temperatura: riesgo si <0°C o >35°C
+    if temperatura < 0:
+        temp_riesgo = (abs(temperatura) * 1.5)
+    elif temperatura > 35:
+        temp_riesgo = ((temperatura - 35) * 2)
+    else:
+        temp_riesgo = 0
+    riesgo = int((velocidad_media * 0.35 + intensidad_lluvia * 0.5 + temp_riesgo))
     if riesgo > 70:
         nivel = "ALTO"
     elif riesgo > 40:

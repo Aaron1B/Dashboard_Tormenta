@@ -43,11 +43,16 @@ def mostrar_protocolos():
     st.subheader("Simulador de protocolos")
     viento = st.slider("Velocidad del viento (km/h)", min_value=0, max_value=150, value=30)
     inundacion = st.slider("Nivel de inundación (cm)", min_value=0, max_value=100, value=10)
+    temperatura = st.slider("Temperatura (°C)", min_value=-10, max_value=50, value=20)
 
-    if viento > 90 or inundacion > 50:
+    # Evaluar riesgo considerando temperatura
+    riesgo_extremo = viento > 90 or inundacion > 50 or temperatura < -5 or temperatura > 45
+    riesgo_medio = (viento > 30 or inundacion > 10 or temperatura < 0 or temperatura > 35) and not riesgo_extremo
+
+    if riesgo_extremo:
         protocolo_activo = "CÓDIGO ROJO: TITÁN"
         color = "red"
-    elif viento > 30 or inundacion > 10:
+    elif riesgo_medio:
         protocolo_activo = "VÍSPERA"
         color = "orange"
     else:
