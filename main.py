@@ -1,5 +1,8 @@
-import os
+import dashboard
+import sys
 
 if __name__ == "__main__":
-    os.system("python -m streamlit run main.py")
-    os.system("streamlit run main.py")
+    if "streamlit" not in sys.modules:
+        print("Este dashboard debe ejecutarse con: streamlit run main.py")
+    else:
+        dashboard.run()
