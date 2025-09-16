@@ -31,7 +31,7 @@ def mostrar_protocolos():
     st.header("K-Lang: Manual de Batalla Interactivo")
 
     st.subheader("Selector de protocolos")
-    protocolo = st.selectbox("Selecciona un protocolo:", list(PROTOCOLOS.keys()))
+    protocolo = st.radio("Selecciona un protocolo:", list(PROTOCOLOS.keys()), key="protocolo_radio")
     ficha = PROTOCOLOS[protocolo]
     st.markdown(f"**Disparador:** {ficha['disparador']}")
     st.markdown("**Secuencia de acciones:**")
