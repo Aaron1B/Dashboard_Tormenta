@@ -1,7 +1,9 @@
 def predecir_riesgo(velocidad_media, intensidad_lluvia, temperatura):
-    # Peso para temperatura: riesgo si <0°C o >35°C
+    # Peso para temperatura: riesgo si <5°C o >35°C
     if temperatura < 0:
-        temp_riesgo = (abs(temperatura) * 1.5)
+        temp_riesgo = (abs(temperatura) * 1.5) + 10  # penalización extra bajo cero
+    elif temperatura < 5:
+        temp_riesgo = (5 - temperatura) * 1.2  # penalización adicional bajo 5°C
     elif temperatura > 35:
         temp_riesgo = ((temperatura - 35) * 2)
     else:
