@@ -5,9 +5,10 @@ def mostrar_simulacion():
     st.header("Chronos: Visión Estratégica 2040")
 
     st.subheader("Selector de Estrategia")
-    estrategia = st.selectbox(
+    estrategia = st.radio(
         "Elige la visión estratégica:",
-        ["Fortaleza Verde", "Búnker Tecnológico"]
+        ["Fortaleza Verde", "Búnker Tecnológico"],
+        key="estrategia_radio"
     )
 
     st.subheader("Visualizador de Futuros")
@@ -28,7 +29,7 @@ def mostrar_simulacion():
 
     try:
         imagen = Image.open(imagen_path)
-        st.image(imagen, caption=estrategia, use_column_width=True)
+        st.image(imagen, caption=estrategia, use_container_width=True)
     except Exception:
         st.warning(f"No se encontró la imagen para '{estrategia}'. Añade '{imagen_path}' en la carpeta 'dashboard'.")
 
