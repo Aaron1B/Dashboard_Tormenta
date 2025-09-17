@@ -45,7 +45,6 @@ def mostrar_protocolos():
     inundacion = st.slider("Nivel de inundación (cm)", min_value=0, max_value=100, value=10)
     temperatura = st.slider("Temperatura (°C)", min_value=-10, max_value=50, value=20)
 
-    # Evaluar riesgo considerando temperatura
     riesgo_extremo = viento > 90 or inundacion > 50 or temperatura < -5 or temperatura > 45
     riesgo_medio = (viento > 30 or inundacion > 10 or temperatura < 0 or temperatura > 35) and not riesgo_extremo
 
